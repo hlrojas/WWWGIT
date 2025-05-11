@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .texto-reducido {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 10;
+            -webkit-box-orient: vertical;
+            max-height: 15em;
+            line-height: 1.5;
+            font-family: Gibson, sans-serif; /* Ajusta la fuente */
+        }
+        .boton-leer-mas {
+            background: none;
+            border: none;
+            color: #0066cc;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="texto-reducido" id="texto">
+        <!-- ↓↓↓ Reemplaza este contenido con tu texto ↓↓↓ -->
+<p>Perteneciente a la jurisdicción de Cusihuiriachi, Chihuahua, se encontraba la Hacienda de Bustillos, un latifundio perteneciente a la familia Zuloaga, quienes lograron que la estación del ferrocarril se estableciera en el territorio, que a raíz de este acontecimiento se fuera poblando hasta llegar a ser la ciudad que actualmente conocemos como Cuauhtémoc. </p>
+<p>Con un ramal que se desprendía de la estación hacia Cusihuiriachi se cumplía con una red de comunicación entre el pueblo minero, el rancho ganadero y la capital del país. La estación del ferrocarril inaugurada a principios del año 1900 llevaba por nombre “Estación de San Antonio de Arenales”, nombre que se fue popularizando a medida de que más y más personas arribaban a estas tierras siendo los nuevos pobladores, haciendo hogar en el Barrio Viejo, donde años más tarde también se establecería el señor Fong Go junto con su esposa Natalia Yui, comerciantes importantes de origen chino que formarían una de las familias más extensas hasta nuestros días, abriendo la primera tienda de abarrotes, un restaurante y un hotel.</p>
+<p>Hacia la década de los 20’s, como resultado de la Revolución Mexicana, los campesinos trabajadores de la Hacienda de Bustillos, encabezados por el señor Belisario Chávez Ochoa, solicitaron el reparto de las tierras que por años habían trabajado para Don Pedro Zuloaga. Fue así como se iniciaron los trámites correspondientes para exigir al gobierno la fundación del Ejido de San Antonio de Arenales, que recibió su dotación provisional hacia septiembre de 1921.</p>
+<p>En marzo de 1922, el Gobierno de la República a cargo del General Álvaro Obregón, recibió la solicitud de una comunidad menonita procedente de Canadá, para establecerse en territorio mexicano. Esto convenía a las reformas agrarias proclamadas por el Presidente. Luego de haber visitado diversos territorios en los estados de Nayarit, Sonora, Durango y Chihuahua, optaron por éste último debido a las cualidades ecológicas que buscaban para el desarrollo de sus actividades agrícolas. Se pactó un acuerdo en el que el gobierno mexicano abriría sus puertas a más de ocho mil menonitas que se establecerían en tierras adquiridas a la familia Zuloaga, siendo respetada su autonomía en cuanto a religión, educación y creencias. A partir de esa fecha, a la estación de San Antonio se verían bajar utensilios, muebles, carretas, maquinaria, animales y todo lo necesario para iniciar una nueva vida.</p> 
+<p>Con fecha de septiembre de 1926, pobladores de San Antonio de los Arenales, enviaron una misiva dirigida al Honorable Congreso del Estado, firmada por más de cien representantes de familia, solicitando se cambiara la categoría de pueblo perteneciente a Cusihuiriachi, hacia un municipio independiente que llevara el nombre de “Cuauhtémoc” en honor al último tlatoani mexica, héroe nacional que defendió su tierra y a su gente tras la conquista de México, como ejemplo de resistencia y perseverancia. </p>
+<p>Para julio de 1927, esta petición habría sido resuelta a favor, tomando la Presidencia del nuevo Municipio de Cuauhtémoc el señor Pedro Baray Quezada.</p>
+<p>A partir de entonces Cuauhtémoc, no dejaría de crecer y fortalecerse gracias al esfuerzo y trabajo de sus familias diversas, hasta llegar a ser una de las ciudades con mayor importancia en el estado, la tierra de la manzana y el queso, la Ciudad de las Tres Culturas.</p>
+        <!-- ... (añade más líneas) -->
+        <!-- ↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑ -->
+    </div>
+    <button class="boton-leer-mas" onclick="toggleTexto()">Leer más</button>
+
+    <script>
+        function toggleTexto() {
+            const texto = document.getElementById('texto');
+            const boton = document.querySelector('.boton-leer-mas');
+            texto.classList.toggle('texto-reducido');
+            boton.textContent = texto.classList.contains('texto-reducido') ? 'Leer más' : 'Leer menos';
+        }
+    </script>
+</body>
+</html>
