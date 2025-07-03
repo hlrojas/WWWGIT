@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Filtrable</title>
+    <style>
+        /* Estilos generales para una apariencia limpia */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 15px;
+        }
+
+        /* Estilo para el campo de búsqueda */
+        #filtro-tabla {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Asegura que el padding no afecte el ancho total */
+        }
+
+        /* Estilos para la tabla */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9em;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        /* Estilo para el encabezado de la tabla */
+        thead th {
+            background-color: #0079c1; /* Un color similar al de Esri */
+            color: white;
+            position: sticky; /* Encabezado fijo */
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" id="filtro-tabla" onkeyup="filtrar()" placeholder="Buscar por nombre de proyecto...">
+
+    <table id="mi-tabla">
+        <thead>
+            <tr>
+                <th>Proyecto</th>
+                <th>Responsable</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Plan de Ordenamiento Territorial</td>
+                <td>Ana García</td>
+                <td>En progreso</td>
+            </tr>
+            <tr>
+                <td>Análisis de Riesgo Hídrico</td>
+                <td>Carlos Martínez</td>
+                <td>Completado</td>
+            </tr>
+            <tr>
+                <td>Catastro Urbano 2025</td>
+                <td>Laura Sánchez</td>
+                <td>En progreso</td>
+            </tr>
+            <tr>
+                <td>Monitoreo de Deforestación</td>
+                <td>Pedro Ramírez</td>
+                <td>Pausado</td>
+            </tr>
+            <tr>
+                <td>Análisis de Expansión Urbana</td>
+                <td>Sofía Torres</td>
+                <td>Completado</td>
+            </tr>
+            <tr>
+                <td>Plan de Movilidad Sostenible</td>
+                <td>Javier Ortiz</td>
+                <td>Iniciado</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        function filtrar() {
+            // 1. Obtener los elementos del DOM
+            const input = document.getElementById("filtro-tabla");
+            const filtro = input.value.toUpperCase(); // Convertir a mayúsculas para no distinguir
+            const tabla = document.getElementById("mi-tabla");
+            const filas = tabla.getElementsByTagName("tr");
+
+            // 2. Recorrer todas las filas de la tabla (empezando en 1 para omitir el encabezado)
+            for (let i = 1; i < filas.length; i++) {
+                // Obtener la primera celda (columna de Proyecto) de la fila actual
+                let celda = filas[i].getElementsByTagName("td")[0];
+                if (celda) {
+                    let textoCelda = celda.textContent || celda.innerText;
+                    // 3. Comparar el texto de la celda con el filtro
+                    if (textoCelda.toUpperCase().indexOf(filtro) > -1) {
+                        filas[i].style.display = ""; // Mostrar la fila si coincide
+                    } else {
+                        filas[i].style.display = "none"; // Ocultar la fila si no coincide
+                    }
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
