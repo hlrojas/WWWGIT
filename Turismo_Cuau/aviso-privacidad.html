@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aviso de Privacidad</title>
+    <style>
+        /* Estilos básicos para que se vea bien */
+        body {
+            font-family: sans-serif;
+            margin: 0;
+            padding: 15px;
+            color: #333;
+        }
+        #aviso-completo {
+            display: none; /* Oculta el texto completo por defecto */
+        }
+        .enlace {
+            color: #007ac2; /* Color de enlace típico de Esri */
+            text-decoration: underline;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="contenedor-aviso">
+        
+        <div id="aviso-resumen">
+            <p>Respetamos tu privacidad. Este sitio utiliza cookies para mejorar la experiencia del usuario. Para más detalles sobre cómo manejamos tus datos, por favor <span class="enlace" onclick="expandirAviso()">lee nuestro aviso de privacidad completo</span>.</p>
+        </div>
+
+        <div id="aviso-completo">
+            <h2>Aviso de Privacidad Completo</h2>
+            <p><strong>Última actualización: 03 de julio de 2025</strong></p>
+            <p>Aquí va todo el texto legal detallado de tu aviso de privacidad. Puedes incluir varias secciones, listas y párrafos.</p>
+            <ul>
+                <li><strong>Responsable de los datos:</strong> [Nombre de tu organización]</li>
+                <li><strong>Datos recopilados:</strong> [Tipos de datos]</li>
+                <li><strong>Finalidad:</strong> [Explicación del uso de los datos]</li>
+            </ul>
+            <p>Este es solo un ejemplo. Asegúrate de que el contenido sea el adecuado para tus necesidades legales.</p>
+            <span class="enlace" onclick="colapsarAviso()">Leer menos</span>
+        </div>
+
+    </div>
+
+    <script>
+        // Dominio permitido para enviar mensajes (el de StoryMaps)
+        // Usa '*' para desarrollo, pero para producción es más seguro especificar el dominio.
+        const originPermitido = 'https://storymaps.arcgis.com';
+
+        // Función para enviar la altura actual del contenido a la página principal
+        function enviarAltura() {
+            // Se usa scrollHeight para obtener la altura total del contenido, visible o no.
+            const altura = document.body.scrollHeight;
+            // Envía un mensaje a la ventana padre (el StoryMap)
+            parent.postMessage({ height: altura }, originPermitido);
+        }
+
+        function expandirAviso() {
+            document.getElementById('aviso-resumen').style.display = 'none';
+            document.getElementById('aviso-completo').style.display = 'block';
+            // Después de mostrar el nuevo contenido, envía la nueva altura
+            enviarAltura();
+        }
+
+        function colapsarAviso() {
+            document.getElementById('aviso-completo').style.display = 'none';
+            document.getElementById('aviso-resumen').style.display = 'block';
+            // Después de ocultar el contenido, envía la nueva altura
+            enviarAltura();
+        }
+
+        // Envía la altura inicial cuando la página carga
+        window.onload = enviarAltura;
+    </script>
+
+</body>
+</html>
